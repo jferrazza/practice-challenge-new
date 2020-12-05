@@ -1,0 +1,68 @@
+<div class="contain">
+  <h1 class="logo">Whose Shout?</h1>
+  <h2 class="header">Welcome {{this.service.me.name}} <button class="btn btn-danger"
+      onclick="window.location='/'">Logout!</button></h2>
+  <div class="times list">
+    <button class="btn btn-success" routerLink="/add">Add...</button>
+    <button class="btn btn-primary" (click)="refreshCoffeeList()">Refresh</button>
+    <h1>Coffee dates</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dataItem of CoffeeListF">
+          <td>{{this.service.GetUser2(dataItem.userid).name}}</td>
+          <td>{{dataItem.date}}</td>
+          <td>{{dataItem.time}}</td>
+          <td><button class="btn btn-danger" (click)="deleteCoffee(dataItem.id)">Cancel</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>Past coffee dates</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Date/Time</th>
+          <th>Paid by</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dataItem of CoffeeListP">
+          <td>{{this.service.GetUser2(dataItem.userid).name}}</td>
+          <td>{{dataItem.date}} {{dataItem.time}}</td>
+          <td><span *ngIf="dataItem.amount != null">{{this.service.GetUser2(dataItem.paidby).name}}</span><div *ngIf="dataItem.amount == null"><b>Not shouted!</b></div></td>
+          <td><span *ngIf="dataItem.amount != null">${{dataItem.amount.toFixed(2)}}</span><div *ngIf="dataItem.amount == null"><button class="btn btn-success" (click)="shoutCoffee(dataItem)">Shout... </button></div></td>
+        </tr>
+      </tbody>
+    </table>
+    <h1>Member Summary</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Email</th>
+          <th>Id</th>
+          <th>Grand Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dataItem of TotalList">
+          <td>{{dataItem.member.name}}</td>
+          <td>{{dataItem.member.email}}</td>
+          <td>{{dataItem.member.$key}}</td>
+          <td *ngIf="dataItem.amount">${{dataItem.amount.toFixed(2)}}</td>
+          <td *ngIf="!dataItem.amount">None</td>
+
+         </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
