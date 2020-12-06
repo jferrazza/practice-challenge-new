@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pracchallenge": {
+      "hosting": {
+        "practice-challenge-new": [
+          "pracchallenge"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pracchallenge"
+  }
+}

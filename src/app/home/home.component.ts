@@ -32,9 +32,12 @@ export class HomeComponent implements OnInit {
 
   }
   deleteCoffee(id) {
+    console.log(id);
     if (confirm("Are you sure you want to delete this date?")) {
       this.service.DeleteCoffee(id);
-      this.refreshCoffeeList();
+      setTimeout(()=>{
+        this.refreshCoffeeList();
+      },10);
     }
   }
   shoutCoffee(id) {

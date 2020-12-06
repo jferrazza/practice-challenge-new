@@ -41,10 +41,11 @@ export class ShoutComponent implements OnInit {
   }
 
   addShout(data) {
-    if (this.user == null || data.amount == null) {
+
+    if (data.paidby == null || data.amount == null) {
       this.warn = "Please enter all fields.";
+      return;
     }
-    data.paidby = this.key;
     console.log(data);
     this.service.UpdateCoffee(this.service.that.$key, data as Coffee);
     this.router.navigate(['/home']);

@@ -20,7 +20,7 @@
           <td>{{this.service.GetUser2(dataItem.userid).name}}</td>
           <td>{{dataItem.date}}</td>
           <td>{{dataItem.time}}</td>
-          <td><button class="btn btn-danger" (click)="deleteCoffee(dataItem.id)">Cancel</button></td>
+          <td><button class="btn btn-danger" (click)="deleteCoffee(dataItem.$key)">Cancel</button></td>
         </tr>
       </tbody>
     </table>
